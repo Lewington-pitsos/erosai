@@ -12,6 +12,12 @@
     },
     "permissions": [
       "http://*/*", "https://*/*", "tabs"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["send.js"]
+      }
     ]
     // "app": {
     //   "background": {
