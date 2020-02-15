@@ -1,7 +1,7 @@
 {
     "name": "ErosAI",
     "description": "Pithy description (132 characters or less, no HTML)",
-    "version": "0.0.0.1",
+    "version": "0.0.0.2",
     "manifest_version": 2,
     "icons": {
       "128": "assets/dummy-128x128.png"
@@ -11,8 +11,11 @@
       "default_popup": "popup.html"
     },
     "permissions": [
-      "storage", "tabs"
+      "storage", "tabs", "https://*/", "http://*/"
     ],
+    "background": {
+      "scripts": ["background.js"]
+    },
     "content_scripts": [
       {
         "matches": ["http://*/*", "https://*/*"],

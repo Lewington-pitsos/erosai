@@ -1,4 +1,4 @@
-var endpoint = "http://localhost:8091"
+var endpoint = "http://104.210.105.202:8082"
 
 window.onload = function() {
     setupButtons();

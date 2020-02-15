@@ -1,27 +1,14 @@
-var endpoint = "http://localhost:8091"
+var endpoint = "http://104.210.105.202:8082"
 
-const req = new XMLHttpRequest();
-
-req.onreadystatechange = function() { // Call a function when the state changes.
-    if (this.readyState === XMLHttpRequest.DONE) {
-        if (this.status === 200) {
-            console.log("Got response 200!");
-        } else {
-            console.log("failed to send message");
-        }
-        
-    }
-}
-
-req.open("POST", endpoint + "/process-url", true);
-req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 chrome.storage.local.get(/* String or Array */["erosai_access_token"], function(items){
-    console.log(window.location);
+    var URL = window.location.href
 
-    if (!window.location.href.includes(endpoint)) {
-        req.send(JSON.stringify({
-            Token: items["erosai_access_token"],
-            URL: window.location.href,
-        }));
+
+    if (!URL.includes(endpoint) && !URL.includes("www.google.com/search")) {
+        console.log("seinding url" + URL);
+        console.log("token " + items["erosai_access_token"]);
+        chrome.runtime.sendMessage({url: URL, token: items["erosai_access_token"]}, function(response) {
+            console.log(response.status);
+        });
     }
 });
