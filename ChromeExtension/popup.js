@@ -44,6 +44,10 @@ window.onload = function() {
         } else if (event.target.id == "logout") {
             chrome.storage.local.set({"isLoggedIn": "false" }, function(){});
             setToLogOutState();
+        } else if (event.target.id == "recommendations" && event.target.disabled == false) {
+            chrome.storage.local.get(["erosai_access_token"], function(items){
+                chrome.tabs.create({url: endpoint + "/html/recommend.html?token=" + items["erosai_access_token"]});
+            });
         }
         // alert("hello");
         //validation code to see State field is mandatory.  
@@ -51,7 +55,7 @@ window.onload = function() {
 }
 
 function setupButtons() {
-    chrome.storage.local.get(/* String or Array */["isLoggedIn"], function(items){
+    chrome.storage.local.get(["isLoggedIn"], function(items){
         if (items["isLoggedIn"] == "true") {
             document.getElementById("login").style.display = "none";
             document.getElementById("status").innerHTML = "You are Logged In";

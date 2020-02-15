@@ -1,11 +1,6 @@
-console.log(window.location.href);
+var endpoint = "http://localhost:8091"
 
 const req = new XMLHttpRequest();
-const baseUrl = "https://myserver.com/login";
-
-req.open("POST", baseUrl, true);
-req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-req.send("asdasdsd");
 
 req.onreadystatechange = function() { // Call a function when the state changes.
     if (this.readyState === XMLHttpRequest.DONE) {
@@ -17,3 +12,16 @@ req.onreadystatechange = function() { // Call a function when the state changes.
         
     }
 }
+
+req.open("POST", endpoint + "/process-url", true);
+req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+chrome.storage.local.get(/* String or Array */["erosai_access_token"], function(items){
+    console.log(window.location);
+
+    if (!window.location.href.includes(endpoint)) {
+        req.send(JSON.stringify({
+            Token: items["erosai_access_token"],
+            URL: window.location.href,
+        }));
+    }
+});
