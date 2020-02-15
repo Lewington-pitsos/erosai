@@ -1,0 +1,21 @@
+{
+    "name": "HeyEureka",
+    "description": "Pithy description (132 characters or less, no HTML)",
+    "version": "0.0.0.1",
+    "manifest_version": 2,
+    "icons": {
+      "128": "hotdog-flat-128x128.png"
+    },
+    "browser_action": {
+      "default_title": "Record visited page",
+      "default_popup": "popup.html"
+    },
+    "permissions": [
+      "http://*/*", "https://*/*", "tabs"
+    ]
+    // "app": {
+    //   "background": {
+    //     "scripts": ["popup.js"]
+    //   }
+    // }
+  }
