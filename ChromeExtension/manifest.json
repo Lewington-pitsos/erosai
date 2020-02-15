@@ -4,7 +4,7 @@
     "version": "0.0.0.1",
     "manifest_version": 2,
     "icons": {
-      "128": "hotdog-flat-128x128.png"
+      "128": "assets/dummy-128x128.png"
     },
     "browser_action": {
       "default_title": "Record visited page",
@@ -19,9 +19,4 @@
         "js": ["send.js"]
       }
     ]
-    // "app": {
-    //   "background": {
-    //     "scripts": ["popup.js"]
-    //   }
-    // }
   }
