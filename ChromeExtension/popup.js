@@ -24,12 +24,8 @@ window.onload = function() {
                         chrome.storage.local.set({"isLoggedIn": "true" }, function(){});
                         chrome.storage.local.set({"erosai_access_token": this.response}, function(){});
                         setToButtonMode();
-
-                    } else if (this.status == 400) {
-                        document.location.reload(true)
-                        alert("Username or Password was not recognized")
                     } else {
-                        alert("OOPS! Something went hideously wrong, contact an admin.")
+                        alert("Username or Password was not recognized")
                     }
                 }
             };
